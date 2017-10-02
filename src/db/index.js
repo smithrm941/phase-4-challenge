@@ -14,6 +14,26 @@ function getAlbumsByID(albumID, cb) {
   _query('SELECT * FROM albums WHERE id = $1', [albumID], cb)
 }
 
+function getUsers(cb) {
+  _query('SELECT * FROM albums', [], cb)
+}
+
+function getUserByID(userID, cb) {
+  _query('SELECT * FROM users WHERE id = $1', [], cb)
+}
+
+function getReviews(cb) {
+  _query('SELECT * FROM reviews WHERE id = $1', [], cb)
+}
+
+function getReviewsByAlbumID(albumID, cb) {
+  _query('SELECT * FROM reviews WHERE album = $1', [albumID], cb)
+}
+
+function getReviewsByAuthorID(authorID, cb) {
+  _query('SELECT * FROM reviews WHERE author = $1', [authorID], cb)
+}
+
 function _query(sql, variables, cb) {
   console.log('QUERY ->', sql.replace(/[\n\s]+/g, ' '), variables)
 
@@ -32,4 +52,9 @@ function _query(sql, variables, cb) {
 module.exports = {
   getAlbums,
   getAlbumsByID,
+  getUsers,
+  getUserByID,
+  getReviews,
+  getReviewsByAlbumID,
+  getReviewsByAuthorID
 }
