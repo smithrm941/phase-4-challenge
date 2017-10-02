@@ -37,6 +37,19 @@ app.get('/albums/:albumID', (req, res) => {
   })
 })
 
+app.get('/users/:userID', (req, res) => {
+  const userID = req.params.userID
+
+  db.getUserByID(userID, (error, users) => {
+    if (error) {
+      res.status(500).render('error', {error})
+    } else {
+      const user = users[0]
+      res.render('user_profile', {user})
+    }
+  })
+})
+
 app.use((req, res) => {
   res.status(404).render('not_found')
 })

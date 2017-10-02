@@ -19,7 +19,7 @@ function getUsers(cb) {
 }
 
 function getUserByID(userID, cb) {
-  _query('SELECT * FROM users WHERE id = $1', [], cb)
+  _query('SELECT * FROM users WHERE id = $1', [userID], cb)
 }
 
 function getReviews(cb) {
