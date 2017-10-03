@@ -2,8 +2,7 @@
 <html>
 <head>
   <title>Vinyl : <%= user.name %></title>
-  <link rel="stylesheet" type="text/css" href="/style.css">
-  <script type="text/javascript" src="/script.js"></script>
+  <%- include ./partials/style_script %>
 </head>
 <body>
 <%- include ./partials/navbar %>
@@ -23,7 +22,7 @@
       <h3>Artist: <%=review.artist%></h3>
       <h3 class="review-list">Date Reviewed: <%=review.review_date.toDateString().substring(0, 15)%></h3>
       <h3 class="review-list"><a href="/reviews/<%=review.review_id%>"><%=review.review_title%></a></h3>
-      <h3 class="review-list"><a href="/reviews/<%=review.review_id%>"><%=review.content%></a></h3>
+      <h3 class="review-list"><%=review.content%></h3>
     <% }) %>
 
   <% } %>

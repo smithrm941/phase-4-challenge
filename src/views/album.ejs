@@ -2,8 +2,7 @@
 <html>
 <head>
   <title>Vinyl : <%= album.title %></title>
-  <link rel="stylesheet" type="text/css" href="/style.css">
-  <script type="text/javascript" src="/script.js"></script>
+  <%- include ./partials/style_script %>
 </head>
 <body>
 <%- include ./partials/navbar %>
@@ -19,12 +18,14 @@
     <% reviews.forEach(function(review){ %>
       <h3 class="review-list">Date Reviewed: <%=review.review_date.toDateString().substring(0, 15)%></h3>
       <h3 class="review-list"><%=review.content%></h3>
-      <h3 class="review-list"><a href="/users/<%=review.author%>">Reviewed by: <%=review.review_author%></a></h3>
+      <h3 class="review-list">Reviewed by: <a href="/users/<%=review.author%>"><%=review.review_author%></a></h3>
     <% }) %>
 
   <% } %>
-
-  <!-- TODO: implement album reviews -->
-
+  <br>
+  <form action="/albums/<%= album.id %>/new_review" method="GET">
+    <button type="submit">Add Review</button>
+  </form>
+  <button class="fa fa-trash"></button>
 </body>
 </html>
