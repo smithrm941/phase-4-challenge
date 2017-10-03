@@ -12,6 +12,17 @@
   <em>by <%= album.artist %></em>
 
   <h2>Reviews</h2>
+  <% if(reviews.length === 0) {%>
+      <h3>No reviews yet!</h3>
+  <% } else { %>
+
+    <% reviews.forEach(function(review){ %>
+      <h3 class="review-list">Date Reviewed: <%=review.review_date.toDateString().substring(0, 15)%></h3>
+      <h3 class="review-list"><%=review.content%></h3>
+      <h3 class="review-list"><a href="/users/<%=review.author%>">Reviewed by: <%=review.review_author%></a></h3>
+    <% }) %>
+
+  <% } %>
 
   <!-- TODO: implement album reviews -->
 

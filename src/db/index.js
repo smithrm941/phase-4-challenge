@@ -27,7 +27,15 @@ function getReviews(cb) {
 }
 
 function getReviewsByAlbumID(albumID, cb) {
-  _query('SELECT * FROM reviews WHERE album = $1', [albumID], cb)
+  _query(`SELECT
+            reviews.*, users.name AS review_author
+          FROM
+            reviews, users
+          WHERE
+            reviews.album = $1
+          AND
+            reviews.author = users.id;
+          `, [albumID], cb)
 }
 
 function getAlbumsAndReviewsByUser(authorID, cb) {

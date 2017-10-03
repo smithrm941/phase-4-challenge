@@ -32,7 +32,13 @@ app.get('/albums/:albumID', (req, res) => {
       res.status(500).render('error', {error})
     } else {
       const album = albums[0]
-      res.render('album', {album})
+      if(album) {
+        db.getReviewsByAlbumID(album.id, (error, reviews) => {
+          res.render('album', {album, reviews})
+        })
+      } else {
+        res.status(404).render('not_found')
+      }
     }
   })
 })
@@ -44,11 +50,15 @@ app.get('/users/:userID', (req, res) => {
       res.status(500).render('error', {error})
     } else {
       const user = users[0]
-      db.getAlbumsAndReviewsByUser(user.id, (error, reviews) => {
-        res.render('user_profile', {
-          user,
-          reviews})
-      })
+      if(user) {
+        db.getAlbumsAndReviewsByUser(user.id, (error, reviews) => {
+          res.render('user_profile', {
+            user,
+            reviews})
+          })
+      } else {
+        res.status(404).render('not_found')
+      }
     }
   })
 })
