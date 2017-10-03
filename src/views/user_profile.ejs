@@ -23,9 +23,8 @@
       <h3 class="review-list">Date Reviewed: <%=review.review_date.toDateString().substring(0, 15)%></h3>
       <h3 class="review-list"><a href="/reviews/<%=review.review_id%>"><%=review.review_title%></a></h3>
       <h3 class="review-list"><%=review.content%></h3>
+      <button class="fa fa-trash"></button>
     <% }) %>
 
   <% } %>
-
-</body>
-</html>
+<%-include ./partials/footer %>

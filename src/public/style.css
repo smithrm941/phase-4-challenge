@@ -1,5 +1,9 @@
 html, body {
-  margin: 0;
+  margin-left: 15px;
   padding: 0;
   width: 100vw;
+}
+
+.new-review-form {
+  margin-left: 50px;
 }

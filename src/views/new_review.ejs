@@ -5,9 +5,11 @@
   <%- include ./partials/style_script %>
 </head>
 <body>
-<%- include ./partials/navbar %>
+  <%- include ./partials/navbar %>
 
-<h3>New Review for <%=album.title%></h3>
-
-<h3>New Review Form Goes Here</h3>
-</body>
+  <h3>New Review for <%=album.title%></h3>
+  <form class="new-review-form">
+    <textarea name="new-review" rows="25" class="form-control col-8"></textarea>
+    <button type="submit">Submit</button>
+  </form>
+<%-include ./partials/footer %>
