@@ -8,6 +8,9 @@
 <body>
 
   <h1><%= user.name %></h1>
+  <h1><%= user.email %></h1>
+  <h1>Joined: <%= user.join_date.toDateString().substring(0, 15) %></h1>
+
 
   <h2>Reviews</h2>
 
@@ -16,8 +19,11 @@
   <% } else { %>
 
     <% reviews.forEach(function(review){ %>
-      <span><h3 class="review-list"><a href="#reviews/<%=reviews.id%>"><%=review.title%></a></h3></span>
-      <br>
+      <h3 class="review-list">Album: <a href="/albums/<%=review.album_id%>"><%=review.album_title%></a></h3>
+      <h3>Artist: <%=review.artist%></h3>
+      <h3 class="review-list">Date Reviewed: <%=review.review_date.toDateString().substring(0, 15)%></h3>
+      <h3 class="review-list"><a href="/reviews/<%=review.review_id%>"><%=review.review_title%></a></h3>
+      <h3 class="review-list"><a href="/reviews/<%=review.review_id%>"><%=review.content%></a></h3>
     <% }) %>
 
   <% } %>
