@@ -30,30 +30,29 @@ router.get('/albums/:albumID', (req, res) => {
   })
 })
 
-router.get('/albums/:albumID/new_review', (req, res) => {
+//********DELETING REVIEWS FROM ALBUM PAGE************//
+// this would be triggered by button on delete confirmation modal:
+//still need to create modal, this works from trash button
+router.post('/albums/:albumID/reviews/:reviewID', (req, res) => {
+  const albumID = req.params.albumID
+  const reviewID = req.params.reviewID
+  db.deleteReview(reviewID, (error, review) => {
+    const albumID = req.params.albumID
+    res.redirect(`/albums/${albumID}`)
+  })
+})
+
+router.get('/albums/:albumID/reviews/new', (req, res) => {
   const albumID = req.params.albumID
   db.getAlbumsByID(albumID, (error, albums) => {
     if (error) {
       res.status(500).render('error', {error})
     } else {
       const album = albums[0]
-      const {newReviewContent} = req.body
       res.render('new_review', {album})
     }
   })
 })
-
-//route to submit the new review:::
-//router.post('/albums/:albumID/new_review')
-//this includes req.body stuff
-
-//trash button would make a modal pop up and
-//this would be triggered by button on delete confirmation modal:
-// router.post('/reviews/:reviewID', (req, res) => {
-  //db.deleteReview(id, (err) => {
-    //res.redirect back to album page...
-  //})
-// })
 
 router.get('/users/:userID', (req, res) => {
   const userID = req.params.userID
@@ -72,6 +71,18 @@ router.get('/users/:userID', (req, res) => {
         res.status(404).render('not_found')
       }
     }
+  })
+})
+
+//********DELETING REVIEWS FROM USER PAGE************//
+// this would be triggered by button on delete confirmation modal:
+//still need to create modal, this works from trash button
+router.post('/users/:userID/review/:reviewID', (req, res) => {
+  const userID = req.params.userID
+  const reviewID = req.params.reviewID
+  db.deleteReview(reviewID, (error, review) => {
+    const userID = req.params.userID
+    res.redirect(`/users/${userID}`)
   })
 })
 

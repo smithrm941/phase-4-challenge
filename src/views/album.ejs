@@ -19,11 +19,14 @@
       <h3 class="review-list">Date Reviewed: <%=review.review_date.toDateString().substring(0, 15)%></h3>
       <h3 class="review-list"><%=review.content%></h3>
       <h3 class="review-list">Reviewed by: <a href="/users/<%=review.author%>"><%=review.review_author%></a></h3>
+      <form action="/albums/<%= album.id%>/reviews/<%=review.id%>" method="POST">
+        </a><button class="fa fa-trash"></button>
+      </form>
     <% }) %>
 
   <% } %>
   <br>
-  <form action="/albums/<%= album.id %>/new_review" method="GET">
+  <form action="/albums/<%= album.id %>/reviews/new" method="GET">
     <button type="submit">Add Review</button>
   </form>
 <%-include ./partials/footer %>
