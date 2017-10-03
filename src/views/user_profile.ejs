@@ -11,6 +11,16 @@
 
   <h2>Reviews</h2>
 
+  <% if(reviews.length === 0) {%>
+      <h3>No reviews yet!</h3>
+  <% } else { %>
+
+    <% reviews.forEach(function(review){ %>
+      <span><h3 class="review-list"><a href="#reviews/<%=reviews.id%>"><%=review.title%></a></h3></span>
+      <br>
+    <% }) %>
+
+  <% } %>
   <!-- TODO: implement album reviews -->
 
 </body>
