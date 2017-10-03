@@ -11,6 +11,18 @@ router.get('/', (req, res) => {
   })
 })
 
+router.get('/signup', (req, res) => {
+  res.render('signup')
+})
+
+router.post('/signup', (req, res) => {
+  const userData = req.body
+  const {name, email, password} = userData
+  db.createUser(userData, (error, newUser) => {
+    res.redirect('/')
+  })
+})
+
 router.get('/albums/:albumID', (req, res) => {
   const albumID = req.params.albumID
 

@@ -57,14 +57,16 @@ function getAlbumsAndReviewsByUser(authorID, cb) {
             reviews.album = albums.id;`, [authorID], cb)
 }
 
-// function createReview(albumID, author, content, cb) {
-//   let queryText = `INSERT INTO  reviews (albumID, author, content) VALUES ($1, $2, $3) RETURNING *;`
-//   let variables = [albumID, author, content]
-//   _query(queryText, variables, cb)
+// function createReview([albumID, author, content], cb) {
+//   _query(`INSERT INTO  reviews(albumID, author, content) VALUES($1, $2, $3) RETURNING *;`, [albumID, author, content], cb)
 // }
 
 function deleteReview(reviewID, cb) {
   _query('DELETE FROM reviews WHERE id = $1 RETURNING *', [reviewID], cb)
+}
+
+function createUser(userData, cb) {
+  _query('INSERT INTO users(name, email, password) VALUES($1, $2, $3) RETURNING *;', [userData.name, userData.email, userData.password], cb)
 }
 
 function _query(sql, variables, cb) {
@@ -90,6 +92,7 @@ module.exports = {
   getReviews,
   getReviewsByAlbumID,
   getAlbumsAndReviewsByUser,
-  // createReview
-  deleteReview
+  // createReview,
+  deleteReview,
+  createUser
 }
