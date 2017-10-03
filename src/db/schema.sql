@@ -9,7 +9,7 @@ CREATE TABLE users (
   name VARCHAR(255),
   email VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL,
-  join_date DATE DEFAULT current_date
+  join_date TIMESTAMP DEFAULT current_timestamp
 );
 
 CREATE TABLE reviews (
@@ -17,5 +17,5 @@ CREATE TABLE reviews (
   album INT REFERENCES albums(id),
   author INT REFERENCES users(id),
   content TEXT NOT NULL,
-  review_date DATE DEFAULT current_date
+  review_date TIMESTAMP DEFAULT current_timestamp
 );
