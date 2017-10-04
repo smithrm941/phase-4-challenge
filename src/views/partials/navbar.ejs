@@ -1,7 +1,7 @@
 <%if (user) { %>
   <div class="topnav">
     <a href="/">Vinyl</a>
-    <a href="/users/<%=loggedInId%>">Profile</a>
+    <a href="/users/<%= user.id%>">Profile</a>
     <a href="/signout">Sign Out</a>
   </div>
 <% } else { %>

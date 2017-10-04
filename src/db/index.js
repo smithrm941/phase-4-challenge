@@ -67,12 +67,16 @@ function getAlbumsAndReviewsByUser(authorID, cb) {
             reviews.album = albums.id;`, [authorID], cb)
 }
 
-function createReview(reviewData, cb) {
-  _query('INSERT INTO reviews(album, author, content) VALUES($1, $2, $3) RETURNING *;', [reviewData.albumID, reviewData.author, reviewData.content], cb)
+function createReview(newReviewData, cb) {
+  _query(`INSERT INTO
+            reviews(album, author, content)
+          VALUES
+            ($1, $2, $3)
+          RETURNING *;`, [newReviewData.album, newReviewData.author, newReviewData.content], cb)
 }
 
-function deleteReview(reviewID, cb) {
-  _query('DELETE FROM reviews WHERE id = $1 RETURNING *', [reviewID], cb)
+function deleteReview(id, cb) {
+  _query('DELETE FROM reviews WHERE id = $1 RETURNING *', [id], cb)
 }
 
 function createUser(userData, cb) {

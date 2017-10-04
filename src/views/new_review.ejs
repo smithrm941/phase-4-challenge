@@ -8,8 +8,19 @@
   <%- include ./partials/navbar %>
 
   <h3>New Review for <%=album.title%></h3>
-  <form class="new-review-form" action="/album/<%=album.id%>/reviews/new" method="POST">
-    <input name="content" rows="25" class="form-control col-8" type="text"></input>
-    <button type="submit">Submit</button>
+  <form action="/albums/<%=album.id%>/reviews/new" method="POST">
+    <div class="form-group new-review-form">
+      <div>
+        <input name="album" class="form-control-row col-8" type="text" value="<%=album.id%>">
+        <input name="author" class="form-control-row col-8" type="text" value="<%=user.id%>">
+      </div>
+      <input name="content" rows="25" class="form-control col-8" type="text"></input>
+      <button type="submit" id="new-review-button">Submit</button>
+    </div>
   </form>
+  <div class="modal" id="review-posted-alert">
+      <div class="modal-content">
+        <h1>Review is being posted...</h1>
+      </div>
+  </div>
 <%-include ./partials/footer %>
