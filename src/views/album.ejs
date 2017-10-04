@@ -20,7 +20,9 @@
       <h3 class="review-list"><%=review.content%></h3>
       <h3 class="review-list">Reviewed by: <a href="/users/<%=review.author%>"><%=review.review_author%></a></h3>
       <form action="/albums/<%= album.id%>/reviews/<%=review.id%>" method="POST">
-        </a><button class="fa fa-trash"></button>
+        <% if(loggedInId === review.author) {%>
+          </a><button class="fa fa-trash"></button>
+        <%}%>
       </form>
     <% }) %>
 
