@@ -7,11 +7,18 @@
 <body>
 <%- include ./partials/navbar %>
 
-<div id="individual-album">
-  <h1><%= album.title %></h1>
-  <em>by <%= album.artist %></em>
+<div class="individual-album col-sm-10">
+  <div class="album-page-headings">
+    <h1><%= album.title %></h1>
+    <em>by <%= album.artist %></em>
+    <br>
+    <br>
 
-  <span><h2>Reviews</span></h2><span><a href="/albums/<%=album.id%>/reviews/new">Add Review</a></span>
+    <h2>Reviews</h2>
+  </div>
+  <form action="/albums/<%=album.id%>/reviews/new" method="GET" class="add-review-button">
+    <button type="submit">Add Review</button>
+  </form>
   <br>
   <br>
 

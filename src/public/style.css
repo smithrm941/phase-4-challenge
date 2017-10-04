@@ -53,8 +53,6 @@ html, body {
   margin-left: 23%;
 }
 
-
-
 .sign-in-link{
   margin-right: 60px;
 }
@@ -77,8 +75,18 @@ html, body {
   margin-right: 5%;
 }
 
-#individual-album{
-  padding-left:30%
+.individual-album{
+  padding-left:15%
+}
+
+.album-page-headings{
+  text-align: left;
+  display: inline-block;
+}
+
+.add-review-button{
+  margin-left: 30%;
+  display: inline-block;
 }
 
 .new-review-form {
