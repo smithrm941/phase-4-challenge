@@ -1,6 +1,6 @@
 const ensureLoggedIn = (request, response, next) => {
   if(!request.session.user){
-    response.redirect('/')
+    response.render('signin', {user: null, message: 'Please sign in or sign up for Vinyl'})
   } else {
     next()
   }

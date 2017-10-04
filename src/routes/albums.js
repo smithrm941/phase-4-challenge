@@ -46,16 +46,20 @@ albums.get('/:albumID/reviews/new', (req, res) => {
   })
 })
 
-// //route to submit the new review:::
-// albums.post('/albums/:albumID/reviews/new', (req, res) => {
-//   const albumID = req.params.albumID
-//   // const author = 1
-//   const content = req.body.content
-//   const newReviewData = {albumID, content}
-//   db.createReview(newReviewData, (error, review) => {
-//     console.log('the new review::::', review)
-//     res.redirect('/')
-//   })
-// })
+albums.post('/:albumID/reviews/new', (req, res) => {
+  const albumID = req.params.albumID
+  const author = req.session.user.id
+  const content = req.body.content
+  console.log('new review post route:::::::', albumID)
+  // db.createReview(reviewData, (error, review) => {
+  //   if (error) {
+  //     res.status(500).render('error', {error, user: req.session.user, loggedInId: req.session.user.id})
+  //   } else {
+  //     req.session.user = user
+  //     res.redirect(`/albums/${albumID}`)
+  //   }
+  // })
+})
+
 
 module.exports = albums

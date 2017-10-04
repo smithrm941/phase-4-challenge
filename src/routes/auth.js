@@ -54,13 +54,12 @@ auth.post('/signin', (req, res) => {
 const userData = req.body
 const {email, password} = userData
 db.checkIfUserExists(userData, (error, user) => {
-  if(!user[0]){
-    res.render('signin', {message: 'User does not exist.', user: null})
+  if(!user[0] || (password!== user[0].password)){
+    res.render('signin', {message: 'Incorrect email or password.', user: null})
   } else if(user[0]) {
-    console.log('who is user[0] trying to sign in????', user[0])
     db.logInUser(userData, (error, verifiedUser) => {
         if (error) {
-          res.status(500).render('error', {error})
+          res.status(500).render('error', {error, user: null})
         } else {
           let user = verifiedUser[0]
           req.session.user = user
