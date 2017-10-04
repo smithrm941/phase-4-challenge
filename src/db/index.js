@@ -44,7 +44,9 @@ function getReviewsByAlbumID(albumID, cb) {
           WHERE
             reviews.album = $1
           AND
-            reviews.author = users.id;
+            reviews.author = users.id
+          ORDER BY
+            review_date DESC;
           `, [albumID], cb)
 }
 

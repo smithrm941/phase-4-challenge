@@ -19,9 +19,18 @@
       <h3 class="review-list"><%=review.content%></h3>
       <h3 class="review-list">Reviewed by: <a href="/users/<%=review.author%>"><%=review.review_author%></a></h3>
       <% if(user.id === review.author) {%>
-        <form action="/albums/<%= album.id%>/reviews/delete/<%=review.id%>" method="POST">
-            </a><button class="fa fa-trash"></button>
-        </form>
+        <button class="fa fa-trash" id="delete-review-button"></button>
+        <div class="modal" id="delete-confirmation">
+          <div class="modal-content">
+            <h3>Are you sure you want to delete your review for <%=album.title%>?</h3>
+            <form action="/albums/<%= album.id%>/reviews/delete/<%=review.id%>" method="POST">
+              <button type="submit" id="confirm-delete-button">DELETE</button>
+            </form>
+            <form action="/albums/<%=album.id%>" method="GET">
+              <button id="delete-cancel-button">CANCEL</button>
+            </form>
+          </div>
+        </div>
       <%}%>
     <% }) %>
 

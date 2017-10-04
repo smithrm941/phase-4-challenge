@@ -1,8 +1,6 @@
 const db = require('../db')
 const albums = require('express').Router()
 
-
-
 albums.get('/:albumID', (req, res) => {
   const albumID = req.params.albumID
 
@@ -22,9 +20,6 @@ albums.get('/:albumID', (req, res) => {
   })
 })
 
-//********DELETING REVIEWS FROM ALBUM PAGE************//
-// this would be triggered by button on delete confirmation modal:
-//still need to create modal, this works from trash button
 albums.post('/:albumID/reviews/delete/:reviewID', (req, res) => {
   const albumID = req.params.albumID
   const reviewID = req.params.reviewID
@@ -66,44 +61,7 @@ albums.post('/:albumID/reviews/new', (req, res) => {
       }
     }
   })
-
-  // const albumID = req.params.albumID
-  // const newReviewData = req.body
-  // const {album, author, content} = newReviewData
-  // db.createReview(newReviewData, (error, newReview) => {
-  //   if (error) {
-  //     res.status(500).render('error', {error, user, loggedInId})
-  //   } else {
-  //     const albumID = req.params.albumID
-  //     res.redirect(`/albums/${albumID}`)
-  //   }
-  // })
 })
-
-// albums.post('/:albumID/reviews/new', (req, res) => {
-//   const albumID = req.params.albumID
-//   db.getAlbumsByID(albumID, (error, albums) => {
-//     if (error) {
-//       res.status(500).render('error', {error, user: req.session.user})
-//     } else {
-//       const albums = albums[0]
-//       const albumID = req.params.albumID
-//       const newReviewData = req.body
-//       const {album, author, content} = newReviewData
-//       db.createReview(reviewData, (error, newReview) => {
-//         let user = req.session.user
-//         if (error) {
-//           res.status(500).render('error', {error})
-//         } else {
-//           const albumID = req.params.albumID
-//           res.redirect(`/albums/${albumID}`)
-//         }
-//       })
-//     }
-//   })
-// })
-
-
 
 
 module.exports = albums

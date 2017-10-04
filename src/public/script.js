@@ -1,7 +1,7 @@
 console.log('hello from the browser JavaScript')
-const newReviewButton = document.getElementById('new-review-button')
-const reviewPostedAlert = document.getElementById('review-posted-alert')
+const deleteReviewButton = document.getElementById('delete-review-button')
+const deleteConfirmation = document.getElementById('delete-confirmation')
 
-newReviewButton.addEventListener("click", () => {
-  reviewPostedAlert.style.display = "block";
+deleteReviewButton.addEventListener("click", () => {
+  deleteConfirmation.style.display = "block";
 })

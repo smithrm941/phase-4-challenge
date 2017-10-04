@@ -23,9 +23,6 @@ users.get('/:userID', (req, res) => {
   })
 })
 
-//********DELETING REVIEWS FROM USER PAGE************//
-// this would be triggered by button on delete confirmation modal:
-//still need to create modal, this works from trash button
 users.post('/:userID/review/:reviewID', (req, res) => {
   const userID = req.params.userID
   const reviewID = req.params.reviewID
