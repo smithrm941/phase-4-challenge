@@ -8,9 +8,13 @@ html, body {
   margin-left: 12px;
 }
 
-table {
-  margin-left: 100px;
-  margin-top: 0px;
+.album-list{
+  float: left;
+}
+
+.recent-reviews{
+  float: right;
+  margin-right: 10%;
 }
 
 .profile-info{
@@ -26,9 +30,19 @@ table {
   display: inline-block;
 }
 
-#review-date{
-  margin-right: 100px;
+.review-author{
+  margin-left: 200px;
 }
+
+.individual-album{
+  padding-left:30%
+
+}
+
+.delete-review-buttons{
+  display: inline-block;
+}
+
 .new-review-form {
   margin-left: 50px;
 }
@@ -44,10 +58,6 @@ table {
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-#review-posted-alert {
-  display: none;
-}
-
 #delete-confirmation {
   display: none;
 }
@@ -59,8 +69,4 @@ table {
   padding: 20px;
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
-}
-
-#review-date {
-  margin-left: 100px;
 }

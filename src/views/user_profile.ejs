@@ -21,14 +21,17 @@
         <div class="review-list">
           <h3 class="title-reviewed col-sm-8"><a href="/albums/<%=review.album_id%>"><%=review.album_title%></a></h3>
           <h6 class="review-date"><%=review.review_date.toDateString().substring(0, 15)%></h6>
-          <h6><%=review.content%></h6>
+          <h6 class="review-content"><%=review.content%></h6>
+          <% if(user.id === review.author) {%>
+            <button class="fa fa-trash" class="delete-review-buttons"></button>
+          <% } %>
           <br>
           <br>
           <br>
         </div>
 
-        <% }) %>
+      <% }) %>
 
-        <% } %>
+    <% } %>
 </div>
 <%-include ./partials/footer %>

@@ -7,11 +7,8 @@
 <body>
 <%- include ./partials/navbar %>
 
-  <h1>Vinyl</h1>
-
-  <h2>Records</h2>
-
   <div class="album-list">
+    <h2>Records</h2>
     <% albums.forEach(function(album) { %>
       <div>
         <h5><a href="/albums/<%= album.id %>"><%= album.title %></a></h5>
@@ -19,13 +16,15 @@
       </div>
     <% }) %>
   </div>
-  <h2>Recent Reviews</h2>
-  <% reviews.forEach(function(review){ %>
-    <h3 class="reviewed-album-title"><%= review.album_title%></h3>
-    <h3 class="review-list">Date Reviewed: <%=review.review_date.toDateString().substring(0, 15)%></h3>
-    <h3 class="review-list"><%=review.content%></h3>
-    <h3 class="review-author">by <%=review.review_author%></h3>
-    <br>
-    <br>
-  <% }) %>
+  <div class="recent-reviews">
+    <h2>Recent Reviews</h2>
+    <% reviews.forEach(function(review){ %>
+      <h3 class="title-reviewed"><a href="/albums/<%=review.album_id%>"><%= review.album_title%></a></h3>
+      <h6 class="review-date"><%=review.review_date.toDateString().substring(0, 15)%></h6>
+      <h6 class="review-content"><%=review.content%></h6>
+      <h6 class="review-author">by <a href="/users/<%=review.author%>"><%=review.review_author%></a></h6>
+      <br>
+      <br>
+      <% }) %>
+  </div>
 <%-include ./partials/footer %>

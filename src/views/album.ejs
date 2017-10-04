@@ -7,36 +7,43 @@
 <body>
 <%- include ./partials/navbar %>
 
+<div class="individual-album">
   <h1><%= album.title %></h1>
   <em>by <%= album.artist %></em>
 
-  <h2>Reviews</h2>
-  <% if(reviews.length === 0) {%>
-      <h3>No reviews yet!</h3>
-  <% } else { %>
-    <% reviews.forEach(function(review){ %>
-      <h3 class="review-list">Date Reviewed: <%=review.review_date.toDateString().substring(0, 15)%></h3>
-      <h3 class="review-list"><%=review.content%></h3>
-      <h3 class="review-list">Reviewed by: <a href="/users/<%=review.author%>"><%=review.review_author%></a></h3>
-      <% if(user.id === review.author) {%>
-        <button class="fa fa-trash" class="delete-review-button"></button>
-        <div class="modal" id="delete-confirmation">
-          <div class="modal-content">
-            <h3>Are you sure you want to delete your review for <%=album.title%>?</h3>
-            <form action="/albums/<%= album.id%>/reviews/delete/<%=review.id%>" method="POST">
-              <button type="submit" id="confirm-delete-button">DELETE</button>
-            </form>
-            <form action="/albums/<%=album.id%>" method="GET">
-              <button id="delete-cancel-button">CANCEL</button>
-            </form>
-          </div>
-        </div>
-      <%}%>
-    <% }) %>
-
-  <% } %>
+  <span><h2>Reviews</span></h2><span><a href="/albums/<%=album.id%>/reviews/new">Add Review</a></span>
   <br>
-  <a href="/albums/<%=album.id%>/reviews/new">Add Review</a>
+  <br>
+
+  <% if(reviews.length === 0) {%>
+    <h3>No reviews yet!</h3>
+    <% } else { %>
+      <% reviews.forEach(function(review){ %>
+        <h6 class="review-date"><%=review.review_date.toDateString().substring(0, 15)%></h6>
+        <h6 class="review-content"><%=review.content%></h6>
+        <h6 class="review-author">by: <a href="/users/<%=review.author%>"><%=review.review_author%></a></h6>
+        <% if(user.id === review.author) {%>
+          <button class="fa fa-trash" class="delete-review-button"></button>
+          <br>
+          <br>
+          <div class="modal" id="delete-confirmation">
+            <div class="modal-content">
+              <h3>Are you sure you want to delete your review for <%=album.title%>?</h3>
+              <form action="/albums/<%= album.id%>/reviews/delete/<%=review.id%>" method="POST">
+                <button type="submit" id="confirm-delete-button">DELETE</button>
+              </form>
+              <form action="/albums/<%=album.id%>" method="GET">
+                <button id="delete-cancel-button">CANCEL</button>
+              </form>
+            </div>
+          </div>
+          <%}%>
+          <% }) %>
+
+          <% } %>
+          <br>
+
+</div>
 
 
 <%-include ./partials/footer %>
