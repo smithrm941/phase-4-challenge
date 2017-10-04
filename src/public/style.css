@@ -75,7 +75,7 @@ html, body {
   margin-right: 5%;
 }
 
-.individual-album{
+#individual-album{
   padding-left:15%
 }
 
@@ -113,6 +113,7 @@ html, body {
 
 .review-date {
   display: inline-block;
+  font-size: 150%;
 }
 
 .review-author{

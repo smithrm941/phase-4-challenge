@@ -21,8 +21,9 @@
   </div>
   <div class="recent-reviews col-sm-8">
     <h2>Recent Reviews</h2>
+    <br>
     <% reviews.forEach(function(review){ %>
-      <h3 class="title-reviewed"><a href="/albums/<%=review.album_id%>"><%= review.album_title%></a></h3>
+      <h3 class="title-reviewed col-sm-8"><a href="/albums/<%=review.album_id%>"><%= review.album_title%></a></h3>
       <h6 class="review-date"><%=review.review_date.toDateString().substring(0, 15)%></h6>
       <h6 class="review-content"><%=review.content%></h6>
       <h6 class="review-author">by <a href="/users/<%=review.author%>"><%=review.review_author%></a></h6>
