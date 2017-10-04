@@ -19,12 +19,12 @@
     <h3>No reviews yet!</h3>
     <% } else { %>
       <% reviews.forEach(function(review){ %>
-        <div class="album-page-single-review">
+        <div class="single-review">
           <h6 class="review-date"><%=review.review_date.toDateString().substring(0, 15)%></h6>
           <h6 class="review-content"><%=review.content%></h6>
           <h6 class="review-author">by: <a href="/users/<%=review.author%>"><%=review.review_author%></a></h6>
           <% if(user.id === review.author) {%>
-            <button class="fa fa-trash" class="delete-review-button"></button>
+            <button class="fa fa-trash" id="delete-review-button"></button>
             <br>
             <br>
             <div class="modal" id="delete-confirmation">
@@ -47,5 +47,5 @@
 
 </div>
 
-
+<script type="text/javascript" src="/script.js"></script>
 <%-include ./partials/footer %>

@@ -1,11 +1,11 @@
-console.log('hello from the browser JavaScript')
-const deleteReviewButtons = document.querySelectorAll('.delete-review-buttons')
-const deleteConfirmation = document.getElementById('delete-confirmation')
+document.addEventListener("DOMContentLoaded", function(event) {
+  const singleReviews = document.querySelectorAll('.single-review > .fa-trash')
 
+  for(let i = 0 ; i < singleReviews.length ; i++) {
+  singleReviews[i].addEventListener('click', function() {
+      let deleteConfirmation = document.getElementById('delete-confirmation')
+      deleteConfirmation.style.display = "block"
+    })
+  };
 
-deleteReviewButtons.forEach((deleteReviewButton)=> {
-  deleteReviewButton.addEventListener("click", () => {
-    console.log('I push the button')
-    deleteConfirmation.style.display = "block";
-  })
-})
+});
