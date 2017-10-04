@@ -8,8 +8,8 @@
   <%- include ./partials/navbar %>
 
   <h3>New Review for <%=album.title%></h3>
-  <form class="new-review-form" action="/album/<%=album.id%>/reviews/new" method="GET">
-    <textarea name="content" rows="25" class="form-control col-8"></textarea>
+  <form class="new-review-form" action="/album/<%=album.id%>/reviews/new" method="POST">
+    <input name="content" rows="25" class="form-control col-8" type="text"></input>
     <button type="submit">Submit</button>
   </form>
 <%-include ./partials/footer %>

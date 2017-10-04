@@ -23,7 +23,7 @@ function getUserByID(userID, cb) {
 }
 
 function getReviews(cb) {
-  _query('SELECT * FROM reviews WHERE id = $1', [], cb)
+  _query('SELECT * FROM reviews ORDER BY review_date DESC LIMIT 3', [], cb)
 }
 
 function getReviewsByAlbumID(albumID, cb) {
@@ -57,9 +57,9 @@ function getAlbumsAndReviewsByUser(authorID, cb) {
             reviews.album = albums.id;`, [authorID], cb)
 }
 
-// function createReview([albumID, author, content], cb) {
-//   _query(`INSERT INTO  reviews(albumID, author, content) VALUES($1, $2, $3) RETURNING *;`, [albumID, author, content], cb)
-// }
+function createReview(content, cb) {
+  _query('INSERT INTO reviews(content) VALUES($1) RETURNING *;', [content], cb)
+}
 
 function deleteReview(reviewID, cb) {
   _query('DELETE FROM reviews WHERE id = $1 RETURNING *', [reviewID], cb)
@@ -67,6 +67,14 @@ function deleteReview(reviewID, cb) {
 
 function createUser(userData, cb) {
   _query('INSERT INTO users(name, email, password) VALUES($1, $2, $3) RETURNING *;', [userData.name, userData.email, userData.password], cb)
+}
+
+function checkIfUserExists(userData, cb) {
+  _query('SELECT * FROM users WHERE email = $1;', [userData.email], cb)
+}
+
+function logInUser(userData, cb) {
+  _query('SELECT * FROM users WHERE email = $1 AND password = $2', [userData.email, userData.password], cb)
 }
 
 function _query(sql, variables, cb) {
@@ -92,7 +100,9 @@ module.exports = {
   getReviews,
   getReviewsByAlbumID,
   getAlbumsAndReviewsByUser,
-  // createReview,
+  createReview,
   deleteReview,
-  createUser
+  createUser,
+  checkIfUserExists,
+  logInUser
 }

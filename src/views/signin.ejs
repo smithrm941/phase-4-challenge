@@ -6,11 +6,7 @@
 </head>
 <body>
   <%- include ./partials/navbar %>
-  <form class="sign-up-form" action="/signup" method="POST">
-    <div class="form-group-row">
-      <label for="name" class="col-2 col-form-label">Username</label>
-      <input name="name" type="text"></input>
-    </div>
+  <form class="sign-in-form" action="/signin" method="POST">
     <div class="form-group-row">
       <label for="email" class="col-2 col-form-label">Email</label>
       <input name="email" type="text"></input>
@@ -22,7 +18,7 @@
     <button type="submit">Submit</button>
   </form>
   <%if (message) { %>
-  <p class="message sign-up-message">
+  <p class="message sign-in-message">
     <%=message%>
   </p>
 <% } %>
