@@ -5,6 +5,8 @@
   <%- include ./partials/style_script %>
 </head>
 <body>
+  <%- include ./partials/navbar %>
+
   <h1>Sign Up for Vinyl</h1>
   <form class="sign-up-form" action="/signup" method="POST">
     <div class="form-group-row">
@@ -22,9 +24,9 @@
     <button type="submit">Submit</button>
   </form>
   <%if (message) { %>
-  <p class="message sign-up-message">
-    <%=message%>
-  </p>
-<% } %>
+    <p class="message sign-up-message">
+      <%=message%>
+    </p>
+  <% } %>
 <h3>Already registered? Sign in here: <a href="/signin">Sign In</a></h3>
 <%-include ./partials/footer %>

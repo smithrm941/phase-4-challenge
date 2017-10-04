@@ -6,40 +6,29 @@
 </head>
 <body>
 <%- include ./partials/navbar %>
+<div class="profile-info">
   <h1><%= profile.name %></h1>
   <h1><%= profile.email %></h1>
   <h1>Joined: <%= profile.join_date.toDateString().substring(0, 15) %></h1>
 
-
-  <h2>Reviews</h2>
-
   <% if(reviews.length === 0) {%>
-      <h3>No reviews yet!</h3>
-  <% } else { %>
+    <h3>No reviews yet!</h3>
+    <% } else { %>
+      <br>
+      <br>
+      <h3>Reviews</h3>
+      <% reviews.forEach(function(review){ %>
+        <div class="review-list">
+          <h3 class="title-reviewed col-sm-8"><a href="/albums/<%=review.album_id%>"><%=review.album_title%></a></h3>
+          <h6 class="review-date"><%=review.review_date.toDateString().substring(0, 15)%></h6>
+          <h6><%=review.content%></h6>
+          <br>
+          <br>
+          <br>
+        </div>
 
-    <% reviews.forEach(function(review){ %>
-      <h3 class="review-list">Album: <a href="/albums/<%=review.album_id%>"><%=review.album_title%></a></h3>
-      <h3>Artist: <%=review.artist%></h3>
-      <h3 class="review-list">Date Reviewed: <%=review.review_date.toDateString().substring(0, 15)%></h3>
-      <h3 class="review-list"><a href="/reviews/<%=review.review_id%>"><%=review.review_title%></a></h3>
-      <h3 class="review-list"><%=review.content%></h3>
+        <% }) %>
 
-        <% if(loggedInId === review.author) {%>
-          <button class="fa fa-trash" id="delete-review-button"></button>
-          <div class="modal" id="delete-confirmation">
-            <div class="modal-content">
-              <h3>Are you sure you want to delete your review for <%=review.album_title%>?</h3>
-              <form action="/users/<%= user.id%>/review/<%=review.review_id%>" method="POST">
-                <button type="submit" id="confirm-delete-button">DELETE</button>
-              </form>
-              <form action="/users/<%=user.id%>" method="GET">
-                <button id="delete-cancel-button">CANCEL</button>
-              </form>
-            </div>
-          </div>
-        <%}%>
-
-    <% }) %>
-
-  <% } %>
+        <% } %>
+</div>
 <%-include ./partials/footer %>

@@ -1,7 +1,11 @@
 console.log('hello from the browser JavaScript')
-const deleteReviewButton = document.getElementById('delete-review-button')
+const deleteReviewButtons = document.querySelectorAll('.delete-review-buttons')
 const deleteConfirmation = document.getElementById('delete-confirmation')
 
-deleteReviewButton.addEventListener("click", () => {
-  deleteConfirmation.style.display = "block";
+
+deleteReviewButtons.forEach((deleteReviewButton)=> {
+  deleteReviewButton.addEventListener("click", () => {
+    console.log('I push the button')
+    deleteConfirmation.style.display = "block";
+  })
 })

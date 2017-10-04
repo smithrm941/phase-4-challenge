@@ -4,6 +4,31 @@ html, body {
   width: 100vw;
 }
 
+.navbar a{
+  margin-left: 12px;
+}
+
+table {
+  margin-left: 100px;
+  margin-top: 0px;
+}
+
+.profile-info{
+  float: right;
+  padding-right: 20%;
+}
+
+.title-reviewed {
+  display: inline-block;
+}
+
+.review-date {
+  display: inline-block;
+}
+
+#review-date{
+  margin-right: 100px;
+}
 .new-review-form {
   margin-left: 50px;
 }
@@ -34,4 +59,8 @@ html, body {
   padding: 20px;
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
+}
+
+#review-date {
+  margin-left: 100px;
 }

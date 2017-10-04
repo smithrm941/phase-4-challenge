@@ -19,7 +19,7 @@
       <h3 class="review-list"><%=review.content%></h3>
       <h3 class="review-list">Reviewed by: <a href="/users/<%=review.author%>"><%=review.review_author%></a></h3>
       <% if(user.id === review.author) {%>
-        <button class="fa fa-trash" id="delete-review-button"></button>
+        <button class="fa fa-trash" class="delete-review-button"></button>
         <div class="modal" id="delete-confirmation">
           <div class="modal-content">
             <h3>Are you sure you want to delete your review for <%=album.title%>?</h3>

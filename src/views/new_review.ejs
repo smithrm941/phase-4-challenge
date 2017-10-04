@@ -18,9 +18,9 @@
       <button type="submit" id="new-review-button">Submit</button>
     </div>
   </form>
-  <div class="modal" id="review-posted-alert">
-      <div class="modal-content">
-        <h1>Review is being posted...</h1>
-      </div>
-  </div>
+  <%if (message) { %>
+    <p class="message empty-review-message">
+      <%=message%>
+    </p>
+  <% } %>
 <%-include ./partials/footer %>

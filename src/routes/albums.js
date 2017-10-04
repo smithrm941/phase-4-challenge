@@ -37,7 +37,7 @@ albums.get('/:albumID/reviews/new', (req, res) => {
     } else {
       const album = albums[0]
       if(album) {
-        res.render('new_review', {album, user: req.session.user})
+        res.render('new_review', {album, user: req.session.user, message: ''})
       } else {
         res.status(404).render('not_found', {user: req.session.user})
       }
@@ -49,18 +49,25 @@ albums.post('/:albumID/reviews/new', (req, res) => {
   const albumID = req.params.albumID
   const newReviewData = req.body
   const {album, author, content} = newReviewData
-  db.createReview(newReviewData, (error, createdReview) => {
-    if (error) {
-      res.status(500).render('error', {error, user: req.session.user})
-    } else {
-      const newReview = createdReview[0]
-      if(newReview) {
-        setTimeout(()=> {res.redirect(`/albums/${albumID}`)}, 3000)
+  if(!content) {
+    db.getAlbumsByID(albumID, (error, albums) => {
+      const album = albums[0]
+      res.render('new_review', {album, user: req.session.user, message: 'You cannot submit an empty review.'})
+    })
+  } else {
+    db.createReview(newReviewData, (error, createdReview) => {
+      if (error) {
+        res.status(500).render('error', {error, user: req.session.user, message: ''})
       } else {
-        res.status(404).render('not_found')
+        const newReview = createdReview[0]
+        if(newReview) {
+          setTimeout(()=> {res.redirect(`/albums/${albumID}`)}, 1000)
+        } else {
+          res.status(404).render('not_found')
+        }
       }
-    }
-  })
+    })  
+  }
 })
 
 

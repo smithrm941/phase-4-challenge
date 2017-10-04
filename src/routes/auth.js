@@ -28,21 +28,25 @@ auth.get('/signup', (req, res) => {
 auth.post('/signup', (req, res) => {
 const userData = req.body
 const {name, email, password} = userData
-db.checkIfUserExists(userData, (error, newUser) => {
-  if(newUser[0]){
-    res.render('signup', {message: 'User already exists', user: null})
-  } else if(!newUser[0]) {
-    db.createUser(userData, (error, newUser) => {
-        if (error) {
-          res.status(500).render('error', {error})
-        } else {
-          let user = newUser[0]
-          req.session.user = user
-          res.redirect(`/users/${user.id}`)
-        }
-      })
-    }
-  })
+if(!name || !email || !password){
+  res.render('signup', {message: 'No fields can be left blank.', user: null})
+} else {
+    db.checkIfUserExists(userData, (error, newUser) => {
+      if(newUser[0]){
+        res.render('signup', {message: 'User already exists', user: null})
+      } else if(!newUser[0]) {
+        db.createUser(userData, (error, newUser) => {
+          if (error) {
+            res.status(500).render('error', {error})
+          } else {
+            let user = newUser[0]
+            req.session.user = user
+            res.redirect(`/users/${user.id}`)
+          }
+        })
+      }
+    })
+  }
 })
 
 auth.get('/signin', (req, res) => {
