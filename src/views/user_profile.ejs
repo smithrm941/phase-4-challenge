@@ -6,7 +6,7 @@
 </head>
 <body>
 <%- include ./partials/navbar %>
-<div class="profile-info">
+<div class="profile-info col-sm-8">
   <h1><%= profile.name %></h1>
   <h1><%= profile.email %></h1>
   <h1>Joined: <%= profile.join_date.toDateString().substring(0, 15) %></h1>
@@ -23,9 +23,21 @@
           <h6 class="review-date"><%=review.review_date.toDateString().substring(0, 15)%></h6>
           <h6 class="review-content"><%=review.content%></h6>
           <% if(user.id === review.author) {%>
-            <button class="fa fa-trash" id="delete-review-button"></button>
+            <div class="authored-review">
+              <button class="fa fa-trash" id="delete-review-button"></button>
+              <div class="modal" id="delete-confirmation">
+                <div class="modal-content">
+                  <h3>Are you sure you want to delete your review for <%=review.album_title%>?</h3>
+                  <form action="/users/<%= user.id%>/review/<%=review.review_id%>" method="POST">
+                    <button type="submit" id="confirm-delete-button">DELETE</button>
+                  </form>
+                  <form action="/users/<%=user.id%>" method="GET">
+                    <button id="delete-cancel-button">CANCEL</button>
+                  </form>
+                </div>  
+            </div>
+            </div>
           <% } %>
-          <br>
           <br>
           <br>
         </div>
