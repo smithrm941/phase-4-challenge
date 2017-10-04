@@ -6,6 +6,8 @@
 </head>
 <body>
 <%- include ./partials/navbar %>
+<img class="profile-image"src="https://i.pinimg.com/736x/4e/5c/f7/4e5cf7d4ccb9c59b6620a9c71944d51e--emoticons-text-smileys.jpg" alt="smiley face" width="200px" height="200px"/>
+
 <div class="profile-info col-sm-8">
   <h1><%= profile.name %></h1>
   <h1><%= profile.email %></h1>
@@ -34,7 +36,7 @@
                   <form action="/users/<%=user.id%>" method="GET">
                     <button id="delete-cancel-button">CANCEL</button>
                   </form>
-                </div>  
+                </div>
             </div>
             </div>
           <% } %>
