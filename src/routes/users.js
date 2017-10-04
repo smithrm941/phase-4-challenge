@@ -31,7 +31,7 @@ users.post('/:userID/review/:reviewID', (req, res) => {
   const reviewID = req.params.reviewID
   db.deleteReview(reviewID, (error, review) => {
     const userID = req.params.userID
-    res.redirect(`/${userID}`)
+    res.redirect(`/users/${userID}`)
   })
 })
 

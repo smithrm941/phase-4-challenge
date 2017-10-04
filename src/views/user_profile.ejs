@@ -24,7 +24,9 @@
       <h3 class="review-list"><a href="/reviews/<%=review.review_id%>"><%=review.review_title%></a></h3>
       <h3 class="review-list"><%=review.content%></h3>
       <form action="/users/<%= user.id%>/review/<%=review.review_id%>" method="POST">
-        <button class="fa fa-trash"></button>
+        <% if(loggedInId === review.author) {%>
+          </a><button class="fa fa-trash"></button>
+        <%}%>
       </form>
     <% }) %>
 
