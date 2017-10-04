@@ -6,7 +6,8 @@ auth.get('/', (req, res) => {
     if (error) {
       res.status(500).render('error', {error, user: null})
     } else {
-      db.getReviews((error, reviews) => {
+      db.getRecentReviews((error, reviews) => {
+        console.log('how can we get authors of all reviews????::::', reviews)
         if (error) {
           res.status(500).render('error', {error, user: null})
         } else {

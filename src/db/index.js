@@ -22,8 +22,18 @@ function getUserByID(userID, cb) {
   _query('SELECT * FROM users WHERE id = $1', [userID], cb)
 }
 
-function getReviews(cb) {
-  _query('SELECT * FROM reviews ORDER BY review_date DESC LIMIT 3', [], cb)
+function getRecentReviews(cb) {
+  _query(`SELECT
+            reviews.*, users.name AS review_author, albums.title AS album_title
+          FROM
+            reviews, users, albums
+          WHERE
+            reviews.author = users.id
+          AND
+            reviews.album = albums.id
+          ORDER BY
+            review_date DESC
+          LIMIT 3`, [], cb)
 }
 
 function getReviewsByAlbumID(albumID, cb) {
@@ -97,7 +107,7 @@ module.exports = {
   getAlbumsByID,
   getUsers,
   getUserByID,
-  getReviews,
+  getRecentReviews,
   getReviewsByAlbumID,
   getAlbumsAndReviewsByUser,
   createReview,

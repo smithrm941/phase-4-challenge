@@ -21,8 +21,10 @@
   </div>
   <h2>Recent Reviews</h2>
   <% reviews.forEach(function(review){ %>
+    <h3 class="reviewed-album-title"><%= review.album_title%></h3>
     <h3 class="review-list">Date Reviewed: <%=review.review_date.toDateString().substring(0, 15)%></h3>
     <h3 class="review-list"><%=review.content%></h3>
+    <h3 class="review-author">by <%=review.review_author%></h3>
     <br>
     <br>
   <% }) %>
