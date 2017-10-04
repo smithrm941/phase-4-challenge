@@ -7,20 +7,17 @@
 <body>
   <%- include ./partials/navbar %>
 
-  <h3>New Review for <%=album.title%></h3>
-  <form action="/albums/<%=album.id%>/reviews/new" method="POST">
-    <div class="form-group new-review-form">
-      <div>
-        <input name="album" class="form-control-row col-8" type="text" value="<%=album.id%>">
-        <input name="author" class="form-control-row col-8" type="text" value="<%=user.id%>">
-      </div>
-      <input name="content" rows="25" class="form-control col-8" type="text"></input>
-      <button type="submit" id="new-review-button">Submit</button>
-    </div>
-  </form>
+  <h3 class="new-review-form-title">New Review for <%=album.title%></h3>
   <%if (message) { %>
     <p class="message empty-review-message">
       <%=message%>
     </p>
   <% } %>
+  <div class="form-group new-review-form">
+    <form action="/albums/<%=album.id%>/reviews/new" method="POST">
+        <textarea name="content" rows="25" class="form-control col-8" type="text"></textarea>
+        <br>
+        <button type="submit" class="new-review-submit-button">Submit</button>
+    </form>
+  </div>
 <%-include ./partials/footer %>

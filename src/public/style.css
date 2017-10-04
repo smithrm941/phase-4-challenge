@@ -8,18 +8,60 @@ html, body {
   margin-left: 12px;
 }
 
+.message {
+  color: red;
+}
+
+.sign-in-form{
+  margin-left: 20%;
+}
+
+.sign-up-form{
+  margin-left: 20%;
+}
+
+.sign-in-link{
+  margin-right: 60px;
+}
+
+.sign-out-link{
+  margin-right: 60px;
+}
+
 .album-list{
   float: left;
 }
 
 .recent-reviews{
   float: right;
-  margin-right: 10%;
+  margin-right: 40%;
 }
 
 .profile-info{
   float: right;
   padding-right: 20%;
+}
+
+.individual-album{
+  padding-left:30%
+}
+
+.new-review-form {
+  margin-left: 20%;
+}
+
+.new-review-form-title{
+  text-align: center;
+  margin-right: 35px;
+}
+
+.empty-review-message{
+  text-align: center;
+  margin-right: 35px;
+}
+
+.new-review-submit-button{
+  margin-left: 57%;
 }
 
 .title-reviewed {
@@ -34,18 +76,11 @@ html, body {
   margin-left: 200px;
 }
 
-.individual-album{
-  padding-left:30%
-
-}
-
 .delete-review-buttons{
   display: inline-block;
 }
 
-.new-review-form {
-  margin-left: 50px;
-}
+
 
 .modal{
   display: none; /* Hidden by default */

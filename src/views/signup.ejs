@@ -7,8 +7,8 @@
 <body>
   <%- include ./partials/navbar %>
 
-  <h1>Sign Up for Vinyl</h1>
   <form class="sign-up-form" action="/signup" method="POST">
+    <h1>Sign Up for Vinyl</h1>
     <div class="form-group-row">
       <label for="name" class="col-2 col-form-label">Username</label>
       <input name="name" type="text"></input>
@@ -22,11 +22,12 @@
       <input name="password" type="password"></input>
     </div>
     <button type="submit">Submit</button>
+    <br>
+    <h3>Already registered? Sign in here: <a href="/signin">Sign In</a></h3>
   </form>
   <%if (message) { %>
     <p class="message sign-up-message">
       <%=message%>
     </p>
   <% } %>
-<h3>Already registered? Sign in here: <a href="/signin">Sign In</a></h3>
 <%-include ./partials/footer %>

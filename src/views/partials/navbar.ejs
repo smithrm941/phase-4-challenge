@@ -3,13 +3,13 @@
       <h4 class="navbar-left"><a href="/">Vinyl</a></h4>
       <h4 class="navbar-right">
         <a href="/users/<%= user.id%>">Profile</a>
-        <a href="/signout">Sign Out</a>
+        <a href="/signout" class="sign-out-link">Sign Out</a>
       </h4>
     <% } else { %>
       <h4 class="navbar-left"><a href="/">Vinyl</a></h4>
       <h4 class="navbar-right">
         <a href="/signup">Sign Up</a>
-        <a href="/signin">Sign In</a>
+        <a href="/signin" class="sign-in-link">Sign In</a>
       </h4>
       <% } %>
 </div>
