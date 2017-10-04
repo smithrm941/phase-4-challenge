@@ -13,12 +13,47 @@ html, body {
 }
 
 .sign-in-form{
-  margin-left: 20%;
+  margin-left: 25%;
+}
+
+.sign-in-form h1{
+  margin-left: 15%;
+  font-size: 400%;
+}
+
+.sign-in-form .form-group-row{
+  margin-left: 6%;
+}
+
+.sign-in-form .sign-in-message{
+  margin-left: 18%;
+}
+
+.sign-in-submit{
+  margin-left: 23%;
 }
 
 .sign-up-form{
-  margin-left: 20%;
+  margin-left: 25%;
 }
+
+.sign-up-form h1{
+  font-size: 400%;
+}
+
+.sign-up-form .form-group-row{
+  margin-left: 6%;
+}
+
+.sign-up-form .sign-up-message{
+  margin-left: 18%;
+}
+
+.sign-up-submit{
+  margin-left: 23%;
+}
+
+
 
 .sign-in-link{
   margin-right: 60px;
@@ -79,8 +114,6 @@ html, body {
 #delete-review-button{
   display: inline-block;
 }
-
-
 
 .modal{
   display: none; /* Hidden by default */

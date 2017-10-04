@@ -6,9 +6,9 @@
 </head>
 <body>
   <%- include ./partials/navbar %>
-  <div class="sign-in-form">
-    <h1>Sign In</h1>
     <form class="sign-in-form" action="/signin" method="POST">
+      <h1>Sign In</h1>
+      <br>
       <div class="form-group-row">
         <label for="email" class="col-2 col-form-label">Email</label>
         <input name="email" type="text"></input>
@@ -17,15 +17,19 @@
         <label for="password" class="col-2 col-form-label">Password</label>
         <input name="password" type="password"></input>
       </div>
-      <button type="submit">Submit</button>
+      <%if (message) { %>
+        <div class="form-group-row">
+          <p class="message sign-in-message">
+            <%=message%>
+          </p>
+          <p>Not registered? Sign up <a href="/signup">here</a></p>
+        </div>
+      <% } %>
+      <br>
+      <div class="form-group-row">
+        <button type="submit" class="sign-in-submit">Submit</button>
+      </div>
     </form>
     <br>
     <br>
-    <%if (message) { %>
-      <p class="message sign-in-message">
-        <%=message%>
-      </p>
-      <% } %>
-      <h3>Not registered? Sign up for Vinyl here: <a href="/signup">Sign Up</a></h3>
-  </div>
 <%-include ./partials/footer %>
